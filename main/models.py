@@ -10,4 +10,4 @@ class Tutorial(models.Model):
     published = models.DateTimeField("date published", default=datetime.now())
 
     def __str__(self):
-        return str(self.title)
+        return self.title
