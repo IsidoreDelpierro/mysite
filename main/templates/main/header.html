@@ -21,9 +21,11 @@
       </ul>
     </div>
   </nav>
+  <div class="container">
+    <br>
+    {% block content %}
+    {% endblock %}
+  </div>
 
-  {% block content %}
-  {% endblock %}
-  
 </body>
 <script src="{% static 'tinymce/js/prism.js' %}"></script>
