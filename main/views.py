@@ -48,13 +48,14 @@ def login_request(request):
         if form.is_valid():
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password')
+            #you have to explicitly specify, else you get an error 
             user = authenticate(username=username, password=password)
             if user is not None:
-                #if something is wrong with the data we input
                 login(request, user)
                 messages.info(request, f"You are now logged in as {username}")
                 return redirect("main:homepage")
             else:
+                #if something is wrong with the data we input
                 messages.error(request, "Invalid username or password")
         else:
             #something wrong with the form
@@ -62,6 +63,7 @@ def login_request(request):
 
 
     form = AuthenticationForm()
+    context = {"form":form}
     return render(request,
                     "main/login.html",
-                    {"form":form})
+                    context)
